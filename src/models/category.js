@@ -7,6 +7,6 @@ const categorySchema = Schema({
   image: { type: String },
 });
 
-const Category = model(" Category", categorySchema);
+const Category = model("Category", categorySchema);
 
 module.exports = Category;
