@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const { dbConnection } = require("./databases/mongoose.db");
 const categoryRoute = require("./src/routes/category");
+const productRoute = require("./src/routes/product");
 const exampleRoute = require("./src/routes/example");
 
 require("dotenv").config();
@@ -19,6 +20,7 @@ app.use(morgan("tiny"));
 
 //example route
 app.use("/api/v1", categoryRoute);
+app.use("/api/v1", productRoute);
 
 //connect to mongo database
 dbConnection(uri);

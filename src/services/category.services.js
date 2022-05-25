@@ -13,9 +13,8 @@ exports.getCategory = async (categoryId) => {
 exports.addCategory = async (newCategory) => {
   const category = await new Category(newCategory).save();
   if (!category) {
-    new Error("Can't not save this category");
+    return new Error("Cannot save this category");
   }
-
   return category;
 };
 
