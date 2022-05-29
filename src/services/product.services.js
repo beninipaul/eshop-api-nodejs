@@ -1,8 +1,8 @@
 const Product = require("../models/product");
 
 exports.getProducts = async (filter) => {
-  const product = await Product.find(filter).populate("category");
-  return product;
+  const products = await Product.find(filter).populate("category");
+  return products;
 };
 
 exports.getProduct = async (productId) => {

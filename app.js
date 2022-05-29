@@ -6,7 +6,7 @@ const morgan = require("morgan");
 const { dbConnection } = require("./databases/mongoose.db");
 const categoryRoute = require("./src/routes/category");
 const productRoute = require("./src/routes/product");
-const exampleRoute = require("./src/routes/example");
+const userRoute = require("./src/routes/user");
 
 require("dotenv").config();
 const PORT = process.env.PORT || 5000;
@@ -21,6 +21,7 @@ app.use(morgan("tiny"));
 //example route
 app.use("/api/v1", categoryRoute);
 app.use("/api/v1", productRoute);
+app.use("/api/v1", userRoute);
 
 //connect to mongo database
 dbConnection(uri);
