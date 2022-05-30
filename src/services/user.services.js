@@ -14,3 +14,13 @@ exports.addUser = async (newUser) => {
   const user = await new User(newUser).save();
   return user;
 };
+
+exports.updateUser = async (userId, user) => {
+  const userUpdated = await User.findByIdAndUpdate(userId, user, { new: true });
+  return userUpdated;
+};
+
+exports.loginUser = async (email) => {
+  const user = await User.findOne({ email: email });
+  return user;
+};

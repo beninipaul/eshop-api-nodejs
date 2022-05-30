@@ -83,7 +83,7 @@ const addProductController = async (req, res) => {
     return res.json({
       status: 200,
       success: true,
-      message: "Found.",
+      message: "Saved.",
       productSaved,
     });
   } catch (error) {
@@ -120,7 +120,7 @@ const updateProductController = async (req, res) => {
     return res.json({
       status: 200,
       success: true,
-      message: "Found.",
+      message: "Updated.",
       productUpdated,
     });
   } catch (error) {
