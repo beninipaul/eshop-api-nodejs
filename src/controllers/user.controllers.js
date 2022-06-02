@@ -103,10 +103,10 @@ const loginUserController = async (req, res) => {
         message: "Not found.",
       });
     if (
-      user.length == 0 &&
-      bcrypt.compare(req.body.password, user.passwordHash)
+      user.length !== 0 &&
+      (await bcrypt.compare(req.body.password, user.passwordHash))
     ) {
-      const token = jwt.sign({ userId: user._id }, "mnnnnd", {
+      const token = jwt.sign({ userId: user._id }, process.env.SECRET, {
         expiresIn: "1d",
       });
       return res.json({

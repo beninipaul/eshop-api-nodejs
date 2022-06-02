@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -8,7 +9,6 @@ const categoryRoute = require("./src/routes/category");
 const productRoute = require("./src/routes/product");
 const userRoute = require("./src/routes/user");
 
-require("dotenv").config();
 const PORT = process.env.PORT || 5000;
 const uri = process.env.DB_CONNECTION_STRING;
 
