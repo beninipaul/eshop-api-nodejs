@@ -13,20 +13,20 @@ const { swaggerUI, specs } = require("./config/swaggerConfig");
 const PORT = process.env.PORT || 5000;
 const uri = process.env.DB_CONNECTION_STRING;
 
-//setup middlewares
+//*setup middleware
 app.use(cors());
 app.options("*", cors());
 app.use(bodyParser.json());
 app.use(morgan("tiny"));
 
-//routes
+//*routes
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use("/api/v1", categoryRoute);
 app.use("/api/v1", productRoute);
 app.use("/api/v1", userRoute);
 
-//connect to mongo database
+//*connect to mongo database
 dbConnection(uri);
-//runs the server
+//*runs the server
 app.listen(PORT, () => console.log("Server is running..."));

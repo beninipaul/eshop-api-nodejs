@@ -7,11 +7,15 @@ const {
   updateProductController,
 } = require("../controllers/product.controllers");
 // const { errorHandler } = require("../helpers/error-handler");
-const isAuthenticated = require("../middleware/auth");
+const {
+  isAuthenticated,
+  isAdminAuth,
+  verifyToken,
+} = require("../middleware/auth");
 
 router.get("/product", getProductsController);
-router.get("/product/:productId", isAuthenticated, getProductController);
-router.post("/product", addProductController);
+router.get("/product/:productId", getProductController);
+router.post("/product", verifyToken, isAdminAuth, addProductController);
 router.put("/product/:productId", updateProductController);
 
 module.exports = router;

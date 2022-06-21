@@ -106,9 +106,13 @@ const loginUserController = async (req, res) => {
       user.length !== 0 &&
       (await bcrypt.compare(req.body.password, user.passwordHash))
     ) {
-      const token = jwt.sign({ userId: user._id }, process.env.SECRET, {
-        expiresIn: "1d",
-      });
+      const token = jwt.sign(
+        { userId: user._id, isAdmin: user.isAdmin },
+        process.env.SECRET,
+        {
+          expiresIn: "1d",
+        }
+      );
       return res.json({
         user: { email: user.email, name: user.name },
         token,
