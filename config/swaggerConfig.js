@@ -1,5 +1,6 @@
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
+const API_VERSION = process.env.API_VERSION;
 
 const options = {
   definition: {
@@ -18,12 +19,12 @@ const options = {
 
     servers: [
       {
-        url: "http://localhost:3000",
+        url: `http://localhost:3000${API_VERSION}`,
         description: "Eshop API Documentation",
       },
     ],
   },
-  apis: ["./Routes/*.js"],
+  apis: ["./src/routes/*.js"],
 };
 
 const specs = swaggerJsDoc(options);

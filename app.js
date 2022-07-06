@@ -11,6 +11,7 @@ const userRoute = require("./src/routes/user");
 const { swaggerUI, specs } = require("./config/swaggerConfig");
 
 const PORT = process.env.PORT || 5000;
+const API_VERSION = process.env.API_VERSION;
 const uri = process.env.DB_CONNECTION_STRING;
 
 //*setup middleware
@@ -22,9 +23,9 @@ app.use(morgan("tiny"));
 //*routes
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(specs));
 
-app.use("/api/v1", categoryRoute);
-app.use("/api/v1", productRoute);
-app.use("/api/v1", userRoute);
+app.use(`${API_VERSION}`, categoryRoute);
+app.use(`${API_VERSION}`, productRoute);
+app.use(`${API_VERSION}`, userRoute);
 
 //*connect to mongo database
 dbConnection(uri);
